@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Register</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="main.css"/>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body id="top">
+
+<!-- Header -->
+<header id="header" class="skel-layers-fixed">
+    <h1><img src="../assets/images/logo.png" class="logo"></h1>
+    <nav id="nav">
+        <ul>
+            <li><a href="main.html">처음으로</a></li>
+            <li><a href="interestSearch.html">관심사 검색</a></li>
+            <li><a href="register.html">집밥 하기</a></li>
+            <li><a href="messageBox.html">메시지함</a></li>
+            <li><a href="" class="button special">로그인</a></li>
+        </ul>
+    </nav>
+</header>
+<!-- Main -->
+<section id="one" class="wrapper style1">
+    <header class="major2">
+        <h2>아래의 필요한 정보를 입력해주세요.</h2>
+        <p>자세히 작성해 주시면 빠른 매칭에 도움이 돼요.</p>
+    </header>
+
+    <!-- action 입력 필요 -->
+    <div class="container">
+        <form action="" class="registerHost">
+            <div class="row">
+                <div class="4u">
+                    <section class="special box">
+                        <h3>아래의 빈칸을 눌러 프로필 사진을 넣어보세요.</h3>
+                        <div id="image-holder">
+                            <input type="file" id="fileUpload"/>
+                        </div>
+                        <h3>이름</h3>
+                        <input type="text" name="name">
+                        <h3>거주 지역</h3>
+                        <input type="text" name="homeLocation">
+                        <h3>간단한 소개를 적어주세요</h3>
+                        <textarea name="homeLocation"></textarea>
+                        <h3>관심사를 선택해주세요</h3>
+                        <div class="selectInterest">
+                            <span class="interest">#취업</span>
+                            <span class="interest">#졸업</span>
+                            <span class="interest">#불금</span>
+                            <span class="interest">#집밥</span>
+                            <span class="interest">#밥친구함</span>
+                        </div>
+                        <div class="btns">
+                            <button class="yesBtn" onclick="btnController()">집밥을 시작합니다</button>
+                            <button class="noBtn" onclick=btnController()>메뉴로 돌아갈래요</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <ul class="copyright">
+            <li>&copy; Shall we 집+밥?. All rights reserved.</li>
+        </ul>
+    </div>
+</footer>
+</body>
+<script>
+    $("#fileUpload").on('change', function () {
+
+        if (typeof (FileReader) != "undefined") {
+
+            var image_holder = $("#image-holder");
+            image_holder.empty();
+
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("<img />", {
+                    "src": e.target.result,
+                    "class": "thumb-image"
+                }).appendTo(image_holder);
+            };
+            image_holder.show();
+            reader.readAsDataURL($(this)[0].files[0]);
+        } else {
+            alert("This browser does not support FileReader.");
+        }
+    });
+
+    function btnController() {
+        location.href = "main.html";
+    }
+</script>
+</html>
